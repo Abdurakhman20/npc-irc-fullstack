@@ -1,0 +1,129 @@
+-- \i C:/Web/2023/TestProjects/npc-irc/init-db.sql
+CREATE DATABASE "npc-irc";
+
+\c "npc-irc";
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  age INTEGER NOT NULL,
+  email VARCHAR(255) UNIQUE,
+  role VARCHAR(255) DEFAULT 'USER',
+  "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE tasks (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  status BOOLEAN DEFAULT false,
+  end_date DATE NOT NULL,
+  "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  user_id INTEGER,
+  FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+insert into users (id, name, age, email, role) values (1, 'Tobe Darker', 59, 'tdarker0@ucoz.ru', 'USER');
+insert into users (id, name, age, email, role) values (2, 'Giuditta Kingsnode', 38, 'gkingsnode1@studiopress.com', 'USER');
+insert into users (id, name, age, email, role) values (3, 'Ives Matteacci', 21, 'imatteacci2@imdb.com', 'USER');
+insert into users (id, name, age, email, role) values (4, 'Tiff Andriesse', 35, 'tandriesse3@soundcloud.com', 'USER');
+insert into users (id, name, age, email, role) values (5, 'Davide Simanenko', 23, 'dsimanenko4@cafepress.com', 'USER');
+insert into users (id, name, age, email, role) values (6, 'Clio Doulden', 23, 'cdoulden5@livejournal.com', 'USER');
+insert into users (id, name, age, email, role) values (7, 'Florida Hallgate', 19, 'fhallgate6@w3.org', 'USER');
+insert into users (id, name, age, email, role) values (8, 'Sayers Cardoo', 37, 'scardoo7@nymag.com', 'USER');
+insert into users (id, name, age, email, role) values (9, 'Georgiana Wigglesworth', 32, 'gwigglesworth8@twitpic.com', 'USER');
+insert into users (id, name, age, email, role) values (10, 'Jeffie Peaurt', 23, 'jpeaurt9@hud.gov', 'USER');
+insert into users (id, name, age, email, role) values (11, 'Tommie Mustoo', 35, 'tmustooa@umn.edu', 'USER');
+insert into users (id, name, age, email, role) values (12, 'Arleen Fidian', 35, 'afidianb@mozilla.org', 'USER');
+insert into users (id, name, age, email, role) values (13, 'Angeline Alben', 56, 'aalbenc@tinyurl.com', 'USER');
+insert into users (id, name, age, email, role) values (14, 'Melina Kinsley', 57, 'mkinsleyd@imdb.com', 'USER');
+insert into users (id, name, age, email, role) values (15, 'Jennine Ramalhete', 57, 'jramalhetee@redcross.org', 'USER');
+insert into users (id, name, age, email, role) values (16, 'Cole Chidwick', 20, 'cchidwickf@china.com.cn', 'USER');
+insert into users (id, name, age, email, role) values (17, 'Jemima Neat', 40, 'jneatg@unc.edu', 'USER');
+insert into users (id, name, age, email, role) values (18, 'Dollie Gibson', 34, 'dgibsonh@sciencedaily.com', 'USER');
+insert into users (id, name, age, email, role) values (19, 'Deirdre Weddell', 38, 'dweddelli@google.pl', 'USER');
+insert into users (id, name, age, email, role) values (20, 'Florrie Brixey', 60, 'fbrixeyj@t.co', 'USER');
+insert into users (id, name, age, email, role) values (21, 'Miquela Enric', 23, 'menrick@tripadvisor.com', 'USER');
+insert into users (id, name, age, email, role) values (22, 'Puff Chaloner', 46, 'pchalonerl@live.com', 'USER');
+insert into users (id, name, age, email, role) values (23, 'Evangeline Cutbush', 28, 'ecutbushm@a8.net', 'USER');
+insert into users (id, name, age, email, role) values (24, 'Tarrance Linkie', 27, 'tlinkien@bloomberg.com', 'USER');
+insert into users (id, name, age, email, role) values (25, 'Aurora Beecheno', 54, 'abeechenoo@disqus.com', 'USER');
+insert into users (id, name, age, email, role) values (26, 'Luther Rois', 23, 'lroisp@php.net', 'USER');
+insert into users (id, name, age, email, role) values (27, 'Rriocard Varley', 60, 'rvarleyq@ask.com', 'USER');
+insert into users (id, name, age, email, role) values (28, 'Annette Fallows', 50, 'afallowsr@nbcnews.com', 'USER');
+insert into users (id, name, age, email, role) values (29, 'Teresina Lawrie', 54, 'tlawries@xrea.com', 'USER');
+insert into users (id, name, age, email, role) values (30, 'Kimberley Manville', 43, 'kmanvillet@mtv.com', 'USER');
+insert into users (id, name, age, email, role) values (31, 'Brion Starkey', 48, 'bstarkeyu@purevolume.com', 'USER');
+insert into users (id, name, age, email, role) values (32, 'Benny Roxby', 58, 'broxbyv@house.gov', 'USER');
+insert into users (id, name, age, email, role) values (33, 'Giana Teesdale', 18, 'gteesdalew@vistaprint.com', 'USER');
+insert into users (id, name, age, email, role) values (34, 'Willdon Maple', 27, 'wmaplex@ihg.com', 'USER');
+insert into users (id, name, age, email, role) values (35, 'Bernie Counter', 38, 'bcountery@dell.com', 'USER');
+insert into users (id, name, age, email, role) values (36, 'Ara Odell', 23, 'aodellz@dyndns.org', 'USER');
+insert into users (id, name, age, email, role) values (37, 'Stormie oldey', 54, 'soldey10@yolasite.com', 'USER');
+insert into users (id, name, age, email, role) values (38, 'Jasen Sargeaunt', 49, 'jsargeaunt11@blog.com', 'USER');
+insert into users (id, name, age, email, role) values (39, 'Morgun Renachowski', 21, 'mrenachowski12@cafepress.com', 'USER');
+insert into users (id, name, age, email, role) values (40, 'Magdaia Reay', 49, 'mreay13@cocolog-nifty.com', 'USER');
+insert into users (id, name, age, email, role) values (41, 'Iver Mangenet', 23, 'imangenet14@last.fm', 'USER');
+insert into users (id, name, age, email, role) values (42, 'Sosanna Paris', 23, 'sparis15@slate.com', 'USER');
+insert into users (id, name, age, email, role) values (43, 'Danella Anderton', 30, 'danderton16@opensource.org', 'USER');
+insert into users (id, name, age, email, role) values (44, 'Robbyn Longden', 57, 'rlongden17@princeton.edu', 'USER');
+insert into users (id, name, age, email, role) values (45, 'Tammy Jouannot', 45, 'tjouannot18@loc.gov', 'USER');
+insert into users (id, name, age, email, role) values (46, 'Dru Silwood', 23, 'dsilwood19@gizmodo.com', 'USER');
+insert into users (id, name, age, email, role) values (47, 'Merrilee Snazel', 51, 'msnazel1a@google.com.hk', 'USER');
+insert into users (id, name, age, email, role) values (48, 'Tuck Struss', 24, 'tstruss1b@blogspot.com', 'USER');
+insert into users (id, name, age, email, role) values (49, 'Donal Vanyakin', 24, 'dvanyakin1c@typepad.com', 'USER');
+insert into users (id, name, age, email, role) values (50, 'Baron Creane', 58, 'bcreane1d@dyndns.org', 'USER');
+
+insert into tasks (id, title, description, status, end_date, user_id) values (1, 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.', 'Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat.', false, '2023-11-13', 1);
+insert into tasks (id, title, description, status, end_date, user_id) values (2, 'Nullam varius.', 'Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus.', false, '2023-10-13', 2);
+insert into tasks (id, title, description, status, end_date, user_id) values (3, 'Nullam porttitor lacus at turpis.', 'Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit.', true, '2023-12-20', 3);
+insert into tasks (id, title, description, status, end_date, user_id) values (4, 'Pellentesque viverra pede ac diam.', 'Duis mattis egestas metus. Aenean fermentum.', false, '2023-11-29', 4);
+insert into tasks (id, title, description, status, end_date, user_id) values (5, 'Praesent id massa id nisl venenatis lacinia.', 'Etiam vel augue. Vestibulum rutrum rutrum neque.', true, '2023-11-12', 5);
+insert into tasks (id, title, description, status, end_date, user_id) values (6, 'Integer ac neque.', 'Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum.', false, '2023-12-17', 6);
+insert into tasks (id, title, description, status, end_date, user_id) values (7, 'Pellentesque ultrices mattis odio.', 'Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.', true, '2023-11-21', 7);
+insert into tasks (id, title, description, status, end_date, user_id) values (8, 'Integer a nibh.', 'Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.', true, '2023-10-22', 8);
+insert into tasks (id, title, description, status, end_date, user_id) values (9, 'Proin risus.', 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.', true, '2023-10-18', 9);
+insert into tasks (id, title, description, status, end_date, user_id) values (10, 'Nullam sit amet turpis elementum ligula vehicula consequat.', 'Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl.', true, '2023-12-11', 10);
+insert into tasks (id, title, description, status, end_date, user_id) values (11, 'Sed vel enim sit amet nunc viverra dapibus.', 'Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum.', true, '2023-11-06', 11);
+insert into tasks (id, title, description, status, end_date, user_id) values (12, 'Suspendisse potenti.', 'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.', false, '2023-11-09', 12);
+insert into tasks (id, title, description, status, end_date, user_id) values (13, 'Vivamus vel nulla eget eros elementum pellentesque.', 'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.', false, '2023-12-09', 13);
+insert into tasks (id, title, description, status, end_date, user_id) values (14, 'Pellentesque ultrices mattis odio.', 'Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum.', false, '2023-10-20', 14);
+insert into tasks (id, title, description, status, end_date, user_id) values (15, 'Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.', 'In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat.', true, '2023-12-23', 15);
+insert into tasks (id, title, description, status, end_date, user_id) values (16, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.', 'Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl.', true, '2023-12-08', 16);
+insert into tasks (id, title, description, status, end_date, user_id) values (17, 'In hac habitasse platea dictumst.', 'Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.', true, '2023-12-05', 17);
+insert into tasks (id, title, description, status, end_date, user_id) values (18, 'Ut tellus.', 'Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh.', true, '2023-11-04', 18);
+insert into tasks (id, title, description, status, end_date, user_id) values (19, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.', 'Integer tincidunt ante vel ipsum.', true, '2023-12-21', 19);
+insert into tasks (id, title, description, status, end_date, user_id) values (20, 'Pellentesque eget nunc.', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.', true, '2023-11-24', 20);
+insert into tasks (id, title, description, status, end_date, user_id) values (21, 'Quisque porta volutpat erat.', 'Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', true, '2023-11-27', 21);
+insert into tasks (id, title, description, status, end_date, user_id) values (22, 'Maecenas tincidunt lacus at velit.', 'Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', false, '2023-11-24', 22);
+insert into tasks (id, title, description, status, end_date, user_id) values (23, 'Nullam sit amet turpis elementum ligula vehicula consequat.', 'Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna.', true, '2023-12-17', 23);
+insert into tasks (id, title, description, status, end_date, user_id) values (24, 'Morbi vel lectus in quam fringilla rhoncus.', 'Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.', false, '2023-12-21', 24);
+insert into tasks (id, title, description, status, end_date, user_id) values (25, 'Cras pellentesque volutpat dui.', 'Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque.', false, '2023-12-27', 25);
+insert into tasks (id, title, description, status, end_date, user_id) values (26, 'Nulla tellus.', 'Etiam faucibus cursus urna. Ut tellus.', true, '2023-12-01', 26);
+insert into tasks (id, title, description, status, end_date, user_id) values (27, 'Proin eu mi.', 'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat.', true, '2023-10-30', 27);
+insert into tasks (id, title, description, status, end_date, user_id) values (28, 'Maecenas ut massa quis augue luctus tincidunt.', 'Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.', true, '2023-11-09', 28);
+insert into tasks (id, title, description, status, end_date, user_id) values (29, 'Vestibulum ac est lacinia nisi venenatis tristique.', 'Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante.', true, '2023-12-09', 29);
+insert into tasks (id, title, description, status, end_date, user_id) values (30, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 'Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc.', true, '2023-10-19', 30);
+insert into tasks (id, title, description, status, end_date, user_id) values (31, 'Vivamus vel nulla eget eros elementum pellentesque.', 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.', false, '2023-12-30', 31);
+insert into tasks (id, title, description, status, end_date, user_id) values (32, 'Pellentesque ultrices mattis odio.', 'Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst.', false, '2023-12-18', 32);
+insert into tasks (id, title, description, status, end_date, user_id) values (33, 'Curabitur at ipsum ac tellus semper interdum.', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.', true, '2023-10-21', 33);
+insert into tasks (id, title, description, status, end_date, user_id) values (34, 'Fusce consequat.', 'In quis justo. Maecenas rhoncus aliquam lacus.', false, '2023-11-01', 34);
+insert into tasks (id, title, description, status, end_date, user_id) values (35, 'Etiam vel augue.', 'In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna.', false, '2023-11-26', 35);
+insert into tasks (id, title, description, status, end_date, user_id) values (36, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.', 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.', true, '2023-10-10', 36);
+insert into tasks (id, title, description, status, end_date, user_id) values (37, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.', 'In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.', false, '2023-12-17', 37);
+insert into tasks (id, title, description, status, end_date, user_id) values (38, 'Duis consequat dui nec nisi volutpat eleifend.', 'Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl.', true, '2023-10-21', 38);
+insert into tasks (id, title, description, status, end_date, user_id) values (39, 'Integer tincidunt ante vel ipsum.', 'Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim.', false, '2023-12-12', 39);
+insert into tasks (id, title, description, status, end_date, user_id) values (40, 'Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.', 'Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.', false, '2023-12-31', 40);
+insert into tasks (id, title, description, status, end_date, user_id) values (41, 'Duis ac nibh.', 'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.', false, '2023-12-30', 41);
+insert into tasks (id, title, description, status, end_date, user_id) values (42, 'Duis mattis egestas metus.', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.', false, '2023-11-13', 42);
+insert into tasks (id, title, description, status, end_date, user_id) values (43, 'Fusce consequat.', 'Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.', false, '2023-11-23', 43);
+insert into tasks (id, title, description, status, end_date, user_id) values (44, 'Suspendisse ornare consequat lectus.', 'Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.', true, '2023-12-04', 44);
+insert into tasks (id, title, description, status, end_date, user_id) values (45, 'Donec semper sapien a libero.', 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy.', true, '2023-12-21', 45);
+insert into tasks (id, title, description, status, end_date, user_id) values (46, 'Pellentesque viverra pede ac diam.', 'Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', false, '2023-12-24', 46);
+insert into tasks (id, title, description, status, end_date, user_id) values (47, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 'Integer a nibh.', true, '2023-10-13', 47);
+insert into tasks (id, title, description, status, end_date, user_id) values (48, 'Ut tellus.', 'Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.', true, '2023-12-29', 48);
+insert into tasks (id, title, description, status, end_date, user_id) values (49, 'Etiam justo.', 'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.', true, '2023-10-19', 49);
+insert into tasks (id, title, description, status, end_date, user_id) values (50, 'Maecenas tincidunt lacus at velit.', 'Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.', false, '2023-11-25', 50);
+
+

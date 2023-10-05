@@ -1,4 +1,3 @@
--- \i C:/Web/2023/TestProjects/npc-irc/init-db.sql
 CREATE DATABASE "npc-irc";
 
 \c "npc-irc";

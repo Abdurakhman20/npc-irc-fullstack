@@ -9,27 +9,9 @@ const User = sequelize.define(
     age: { type: DataTypes.INTEGER, allowNull: false },
     email: { type: DataTypes.STRING, unique: true },
     role: { type: DataTypes.STRING, defaultValue: "USER" },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
-    },
   },
   {
-    hooks: {
-      beforeCreate: (task, options) => {
-        task.createdAt = sequelize.literal("CURRENT_TIMESTAMP");
-        task.updatedAt = sequelize.literal("CURRENT_TIMESTAMP");
-      },
-      beforeUpdate: (task, options) => {
-        task.updatedAt = sequelize.literal("CURRENT_TIMESTAMP");
-      },
-    },
+    timestamps: false,
   }
 );
 

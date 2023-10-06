@@ -9,27 +9,9 @@ const Task = sequelize.define(
     description: { type: DataTypes.STRING, allowNull: false },
     status: { type: DataTypes.BOOLEAN, defaultValue: false },
     end_date: { type: DataTypes.DATE, allowNull: false },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
-    },
   },
   {
-    hooks: {
-      beforeCreate: (task, options) => {
-        task.createdAt = sequelize.literal("CURRENT_TIMESTAMP");
-        task.updatedAt = sequelize.literal("CURRENT_TIMESTAMP");
-      },
-      beforeUpdate: (task, options) => {
-        task.updatedAt = sequelize.literal("CURRENT_TIMESTAMP");
-      },
-    },
+    timestamps: false,
   }
 );
 

@@ -1,16 +1,29 @@
 const { Task } = require("../models/index");
+const sequelize = require("../database/db.js");
 
 class TaskController {
   async createTask(req, res) {
     const { title, description, status, end_date, user_id } = req.body;
     try {
-      const task = await Task.create({
-        title,
-        description,
-        status,
-        end_date,
-        user_id,
-      });
+      const [task] = await sequelize.query(
+        `
+        INSERT INTO tasks (title, description, status, end_date, user_id)
+        VALUES (?, ?, ?, ?, ?)
+        RETURNING *
+        `,
+        {
+          replacements: [title, description, status, end_date, user_id],
+          type: sequelize.QueryTypes.INSERT,
+          model: Task,
+        }
+      );
+      // const task = await Task.create({
+      //   title,
+      //   description,
+      //   status,
+      //   end_date,
+      //   user_id,
+      // });
       return res.status(200).json({ message: "Success! Task created!", task });
     } catch (error) {
       console.error(error);
@@ -22,12 +35,32 @@ class TaskController {
 
   async getAllTasks(req, res) {
     const { id } = req.params; // user_id
+    const { limit, offset } = req.query;
     try {
-      const tasks = await Task.findAll({
-        where: {
-          user_id: id,
-        },
-      });
+      const tasks = await sequelize.query(
+        `
+        SELECT * FROM tasks
+        WHERE user_id = :user_id
+        LIMIT :limit
+        OFFSET :offset
+        `,
+        {
+          replacements: {
+            user_id: id,
+            limit: limit || 10,
+            offset: offset || 0,
+          },
+          type: sequelize.QueryTypes.SELECT,
+          model: Task,
+        }
+      );
+      // const tasks = await Task.findAll({
+      //   where: {
+      //     user_id: id,
+      //   },
+      //   limit: limit || 10,
+      //   offset: offset || 0
+      // });
       return res
         .status(200)
         .json({ message: "Success! get all tasks!", tasks });
@@ -43,14 +76,30 @@ class TaskController {
     const { id } = req.params; //task id
     const { title, description, status, end_date } = req.body;
     try {
-      const task = await Task.findByPk(id);
+      // const task = await Task.findByPk(id);
+      const [task] = await sequelize.query(
+        `
+        UPDATE tasks
+        SET title = :title,
+            description = :description,
+            status = :status,
+            end_date = :end_date
+        WHERE id = :id
+        RETURNING *
+        `,
+        {
+          replacements: { id, title, description, status, end_date },
+          type: sequelize.QueryTypes.UPDATE,
+          model: Task,
+        }
+      );
       if (!task) {
         return res.status(400).json({ message: "Error! Task not found!" });
       }
-      task.title = title;
-      task.description = description;
-      task.status = status;
-      task.end_date = end_date;
+      // task.title = title;
+      // task.description = description;
+      // task.status = status;
+      // task.end_date = end_date;
 
       return res.status(200).json({ message: "Success! Task updated!", task });
     } catch (error) {
@@ -64,11 +113,23 @@ class TaskController {
   async deleteTask(req, res) {
     const { id } = req.params; //task id
     try {
-      const task = await Task.findByPk(id);
+      // const task = await Task.findByPk(id);
+      const [task] = await sequelize.query(
+        `
+        DELETE FROM tasks
+        WHERE id = :id
+        RETURNING *
+        `,
+        {
+          replacements: { id },
+          type: sequelize.QueryTypes.DELETE,
+          model: Task,
+        }
+      );
       if (!task) {
         return res.status(400).json({ message: "Error! Task not found!" });
       }
-      task.destroy();
+      // task.destroy();
       return res.status(200).json({ message: "Success! Task deleted!", task });
     } catch (error) {
       console.error(error);

@@ -2,8 +2,8 @@
 
 -- \c "npc-irc";
 
--- CREATE SEQUENCE users_increment START WITH 1 INCREMENT BY 1 MINVALUE 1 NO MAXVALUE NO CYCLE;
--- CREATE SEQUENCE tasks_increment START WITH 1 INCREMENT BY 1 MINVALUE 1 NO MAXVALUE NO CYCLE;
+CREATE SEQUENCE user_id_seq START 51;
+CREATE SEQUENCE task_id_seq START 51;
 
 CREATE TABLE users (
   id INTEGER  PRIMARY KEY ,
@@ -124,4 +124,5 @@ insert into tasks (id, title, description, status, end_date, user_id) values (48
 insert into tasks (id, title, description, status, end_date, user_id) values (49, 'Etiam justo.', 'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.', true, '2023-10-19', 49);
 insert into tasks (id, title, description, status, end_date, user_id) values (50, 'Maecenas tincidunt lacus at velit.', 'Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.', false, '2023-11-25', 50);
 
-
+ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('user_id_seq');
+ALTER TABLE tasks ALTER COLUMN id SET DEFAULT nextval('task_id_seq');

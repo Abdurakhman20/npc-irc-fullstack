@@ -30,8 +30,12 @@ class UserController {
     }
   }
   async getAll(req, res) {
+    const { limit, offset } = req.query;
     try {
-      const users = await User.findAll();
+      const users = await User.findAll({
+        limit: limit || 10,
+        offset: offset || 0,
+      });
       return res.json({ message: "Success!", users });
     } catch (error) {
       console.error(error);

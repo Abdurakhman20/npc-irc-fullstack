@@ -12,6 +12,19 @@ const User = sequelize.define(
   },
   {
     timestamps: false,
+    tableName: "users",
+    hooks: {
+      beforeCreate: async (user) => {
+        const lastUser = await User.findOne({
+          order: [["id", "DESC"]],
+        });
+        let lastId = 0;
+        if (lastUser) {
+          lastId = lastUser.id;
+        }
+        user.id = lastId + 1;
+      },
+    },
   }
 );
 

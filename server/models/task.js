@@ -12,6 +12,19 @@ const Task = sequelize.define(
   },
   {
     timestamps: false,
+    tableName: "tasks",
+    hooks: {
+      beforeCreate: async (task) => {
+        const lastTask = await Task.findOne({
+          order: [["id", "DESC"]],
+        });
+        let lastId = 0;
+        if (lastTask) {
+          lastId = lastTask.id;
+        }
+        task.id = lastId + 1;
+      },
+    },
   }
 );
 

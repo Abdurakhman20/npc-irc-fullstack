@@ -1,6 +1,6 @@
-CREATE DATABASE "npc-irc";
+CREATE DATABASE "npc-irs";
 
-\c "npc-irc";
+\c "npc-irs";
 
 CREATE SEQUENCE user_id_seq START 51;
 CREATE SEQUENCE task_id_seq START 51;

@@ -1,5 +1,25 @@
 @import "./styles/normalize";
 
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins-Regular"),
+    url("./assets/fonts/Poppins-Regular.woff") format("woff");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins-Medium"),
+    url("./assets/fonts/Poppins-Medium.woff") format("woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins-Bold"),
+    url("./assets/fonts/Poppins-Bold.woff") format("woff");
+  font-weight: 700;
+}
+
 *,
 ::before,
 ::after {
@@ -9,4 +29,10 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  font-size: 1.6rem;
 }

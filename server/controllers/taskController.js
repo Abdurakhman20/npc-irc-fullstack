@@ -33,8 +33,8 @@ class TaskController {
     }
   }
 
-  async getAllTasks(req, res) {
-    const { id } = req.params; // user_id
+  async getUserTasks(req, res) {
+    const { userId } = req.params; // user_id
     const { limit, offset } = req.query;
     try {
       const tasks = await sequelize.query(
@@ -46,7 +46,7 @@ class TaskController {
         `,
         {
           replacements: {
-            user_id: id,
+            user_id: userId,
             limit: limit || 10,
             offset: offset || 0,
           },

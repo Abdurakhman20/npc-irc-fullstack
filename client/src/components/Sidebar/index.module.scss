@@ -1,0 +1,80 @@
+.icon {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 20px;
+}
+.iconHeader {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 26px;
+}
+.icon,
+.iconHeader {
+  margin-right: 5px;
+}
+.closeIcon {
+  margin-left: 30px;
+  cursor: pointer;
+  display: none;
+  @media screen and (max-width: 992px) {
+    display: inline;
+  }
+}
+
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #263043;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+}
+
+.sidebarTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px 0px 30px;
+  margin-bottom: 30px;
+}
+
+.sidebarTitle > span {
+  display: none;
+  @media screen and (max-width: 992px) {
+    display: inline;
+  }
+}
+
+.sidebarBrand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebarList {
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebarListItem {
+  padding: 20px 20px 20px 20px;
+  font-size: 18px;
+}
+
+.sidebarListItem:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.sidebarListItem > a {
+  text-decoration: none;
+  color: #9e9ea4;
+}
+.sidebarResponsive {
+  display: inline !important;
+  position: absolute;
+  z-index: 12 !important;
+}

@@ -1,8 +1,9 @@
 import { useState } from "react";
-
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
+import Tables from "./pages/Tables";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -16,7 +17,10 @@ function App() {
         openSidebarToggle={openSidebarToggle}
         openSidebar={openSidebarHandler}
       />
-      <Main />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/tables" element={<Tables />} />
+      </Routes>
     </div>
   );
 }

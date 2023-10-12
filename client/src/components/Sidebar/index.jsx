@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   BsGrid1X2Fill,
   BsFillArchiveFill,
@@ -30,14 +31,14 @@ const Sidebar = ({ openSidebarToggle, openSidebar }) => {
       </div>
       <ul className={styles.sidebarList}>
         <li className={styles.sidebarListItem}>
-          <a href="/#">
+          <Link to="/tables">
             <BsFillGrid3X3GapFill className={styles.icon} /> Tables
-          </a>
+          </Link>
         </li>
         <li className={styles.sidebarListItem}>
-          <a href="/#">
+          <Link to="/">
             <BsGrid1X2Fill className={styles.icon} /> Dashboard
-          </a>
+          </Link>
         </li>
 
         <li className={styles.sidebarListItem}>

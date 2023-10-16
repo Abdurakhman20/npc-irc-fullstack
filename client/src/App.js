@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -7,6 +7,7 @@ import Tables from "./pages/Tables";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
+
   const openSidebarHandler = () => {
     setOpenSidebarToggle(!openSidebarToggle);
   };

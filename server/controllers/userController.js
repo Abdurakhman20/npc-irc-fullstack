@@ -36,7 +36,9 @@ class UserController {
         limit: limit || 10,
         offset: offset || 0,
       });
-      return res.json({ message: "Success!", users });
+      const totalRows = await User.findAndCountAll();
+
+      return res.json({ message: "Success!", users, totalRows });
     } catch (error) {
       console.error(error);
       return res

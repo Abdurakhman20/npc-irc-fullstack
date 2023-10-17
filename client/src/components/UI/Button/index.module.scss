@@ -1,0 +1,14 @@
+$first-color: #393b45;
+$hover-color: #f3b54a;
+
+.button {
+  padding: 10px 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: $first-color;
+  transition: background 0.3s ease-in-out;
+  &:hover {
+    background-color: $hover-color;
+  }
+}

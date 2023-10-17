@@ -3,6 +3,11 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
-  padding: 20px 20px;
+  gap: 50px;
+  margin-left: 20px;
   color: rgba(255, 255, 255, 0.95);
+}
+
+.tableSecondRow {
+  position: relative;
 }

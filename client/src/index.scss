@@ -50,6 +50,7 @@ body {
     "sidebar header header header"
     "sidebar main main main";
   height: 100vh;
+  margin-bottom: 100px;
 }
 @media screen and (max-width: 992px) {
   .grid-container {
@@ -58,5 +59,12 @@ body {
     grid-template-areas:
       "header"
       "main";
+  }
+}
+
+.buttons {
+  button {
+    margin-right: 10px;
+    margin-bottom: 10px;
   }
 }

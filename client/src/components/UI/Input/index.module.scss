@@ -1,0 +1,13 @@
+$first-color: #393b45;
+$hover-color: #f3b54a;
+
+.input {
+  padding: 10px 5px;
+  border: 1px solid $first-color;
+  border-radius: 10px;
+  transition: border 0.3s ease-in-out;
+  &:focus {
+    outline: none;
+    border: 1px solid $hover-color;
+  }
+}

@@ -1,5 +1,6 @@
 import styles from "./index.module.scss";
 import UsersList from "../../components/UsersList";
+import TasksList from "../../components/TasksList";
 
 const Tables = () => {
   return (
@@ -7,7 +8,9 @@ const Tables = () => {
       <div className={`ag-theme-alpine-dark ${styles.tableFirstRow}`}>
         <UsersList />
       </div>
-      <div className={styles.tableSecondRow}></div>
+      <div className={`ag-theme-alpine-dark ${styles.tableSecondRow}`}>
+        <TasksList />
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { AgGridReact } from "ag-grid-react";
-import loadingGif from "../../assets/images/loading.gif";
+import loadingGif from "../assets/images/loading.gif";
 
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
@@ -19,7 +19,7 @@ const UsersList = () => {
   const defaultColDef = useMemo(() => ({ sortable: true, filter: true }), []);
   const datasource = {
     getRows(params) {
-      console.log(JSON.stringify(params, null, 1));
+      //console.log(JSON.stringify(params, null, 1));
       const { startRow, endRow } = params;
       const pageSize = endRow - startRow;
       const offset = startRow;
@@ -27,7 +27,6 @@ const UsersList = () => {
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           params.successCallback(data.users, data.totalRows.count);
         })
         .catch((error) => {

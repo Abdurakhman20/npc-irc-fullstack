@@ -34,19 +34,16 @@ class TaskController {
   }
 
   async getUserTasks(req, res) {
-    const { userId } = req.params; // user_id
     const { limit, offset } = req.query;
     try {
       const tasks = await sequelize.query(
         `
         SELECT * FROM tasks
-        WHERE user_id = :user_id
         LIMIT :limit
         OFFSET :offset
         `,
         {
           replacements: {
-            user_id: userId,
             limit: limit || 10,
             offset: offset || 0,
           },
@@ -54,16 +51,15 @@ class TaskController {
           model: Task,
         }
       );
+
+      const totalRows = await Task.findAndCountAll();
       // const tasks = await Task.findAll({
-      //   where: {
-      //     user_id: id,
-      //   },
       //   limit: limit || 10,
       //   offset: offset || 0
       // });
       return res
         .status(200)
-        .json({ message: "Success! get all tasks!", tasks });
+        .json({ message: "Success! get all tasks!", tasks, totalRows });
     } catch (error) {
       console.error(error);
       return res
